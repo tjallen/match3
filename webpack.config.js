@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
@@ -18,6 +19,10 @@ const plugins = [
     'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
   }),
   new webpack.NamedModulesPlugin(),
+  new HtmlWebpackPlugin({
+    template: 'index.html',
+    hash: true,
+  }),
 ];
 
 if (isProd) {
@@ -26,10 +31,10 @@ if (isProd) {
       minimize: true,
       debug: false
     }),
-    // new CleanWebpackPlugin(['dist'], {
-    //   verbose: true, 
-    //   dry: false,
-    // }),
+    new CleanWebpackPlugin(['dist'], {
+      verbose: true, 
+      dry: false,
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
@@ -63,11 +68,11 @@ module.exports = {
   },
   output: {
     path: staticsPath,
-    filename: '[name].bundle.js'
+    filename: '[name]-[hash:6].bundle.js'
   },
   module: {
     rules: [
-      {
+/*      {
         test: /\.html$/,
         exclude: /node_modules/,
         // file-loader?name=[path][name].[ext]!extract-loader!html-loader
@@ -75,13 +80,11 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'markup-[hash:6]-[name].[ext]'
+              name: '[name].[ext]'
             }
-          },
-          'html-loader'
+          }
         ],
-
-      },
+      },*/
       {
         test: /\.(css|scss)$/,
         exclude: /node_modules/,
