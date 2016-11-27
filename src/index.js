@@ -1,7 +1,12 @@
 import 'styles.scss';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import board from 'board';
-import cell from 'cell';
+import App from './components/app';
 
-console.log(board.foo);
-console.log(cell.foo);
+const root = document.getElementById('app');
+
+ReactDOM.render(
+  <App />,
+  root
+);

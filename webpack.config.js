@@ -64,7 +64,7 @@ module.exports = {
   context: sourcePath,
   entry: {
     main: './index.js',
-    // vendor: ['react']
+    vendor: ['react', 'react-dom']
   },
   output: {
     path: staticsPath,
