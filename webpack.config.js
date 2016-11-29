@@ -111,7 +111,8 @@ module.exports = {
   },
   plugins,
   devServer: {
-    contentBase: './src',
+    // contentBase: './src',
+    contentBase: __dirname + "/src",
     historyApiFallback: true,
     port: 8080,
     compress: isProd,
