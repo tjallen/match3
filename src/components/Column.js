@@ -1,17 +1,23 @@
 import React from 'react';
 import Cell from './Cell';
 import v4 from 'uuid';
+import styled from 'styled-components';
 
 const Column = ({ cells }) => {
+  const StyledColumn = styled.div`
+  display: inline;
+  width: 33%;
+  float: left;
+  `;
   return (
-    <div>
-      {cells.map((cell) =>
-        <Cell
-          content={cell.content}
-          key={v4()}
-        />
-      )}
-    </div>
+      <StyledColumn>
+        {cells.map((cell) =>
+          <Cell
+            content={cell.content}
+            key={v4()}
+          />
+        )}
+      </StyledColumn>
   );
 };
 export default Column;
