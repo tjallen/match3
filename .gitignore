@@ -13,7 +13,6 @@ build
 .DS_Store
 .env
 npm-debug.log
-=======
 dist
 node_modules
 *.log
