@@ -3,7 +3,7 @@ import Cell from './Cell';
 import v4 from 'uuid';
 import styled from 'styled-components';
 
-const Column = ({ cells, onClick }) => {
+const Column = ({cells, ...rest}) => {
   const StyledColumn = styled.div`
   display: inline;
   width: 33%;
@@ -13,9 +13,11 @@ const Column = ({ cells, onClick }) => {
       <StyledColumn>
         {cells.map((cell) =>
           <Cell
+            {...rest}
             content={cell.content}
+            x={cell.x}
+            y={cell.y}
             key={v4()}
-            onClick={onClick}
           />
         )}
       </StyledColumn>

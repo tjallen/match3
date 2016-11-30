@@ -57,7 +57,11 @@ export default class App extends Component {
       <StyledAppWrapper>
         <Title>match3</Title>
         {cells.map((col) =>
-          <Column cells={col} key={v4()} onClick={this.neighbourMethod.bind(this)} />
+          <Column
+            cells={col}
+            key={v4()}
+            onClick={this.neighbourMethod.bind(this)}
+          />
         )}
       </StyledAppWrapper>
     );

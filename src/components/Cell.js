@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Cell = ({ content, onClick }) => {
+const Cell = ({ content, onClick, x, y }) => {
   const StyledCell = styled.div`
     background-color: #fff;
     padding: 5px 0;
