@@ -3,7 +3,7 @@ import Cell from './Cell';
 import v4 from 'uuid';
 import styled from 'styled-components';
 
-const Column = ({ cells }) => {
+const Column = ({ cells, onClick }) => {
   const StyledColumn = styled.div`
   display: inline;
   width: 33%;
@@ -15,6 +15,7 @@ const Column = ({ cells }) => {
           <Cell
             content={cell.content}
             key={v4()}
+            onClick={onClick}
           />
         )}
       </StyledColumn>

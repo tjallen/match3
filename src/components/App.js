@@ -3,17 +3,17 @@ import Column from './Column';
 import styled from 'styled-components';
 import v4 from 'uuid';
 
-const Title = styled.h1`
-  font-size: 1.5em;
-  font-family: sans-serif;
-  text-align: center;
-  color: palevioletred;
-`;
-
 const StyledAppWrapper = styled.div`
   width: 45%;
   margin: 0 auto;
   text-align: center;
+  font-family: sans-serif;
+`;
+
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
 `;
 
 export default class App extends Component {
@@ -48,13 +48,16 @@ export default class App extends Component {
   generateCellContents() {
     return Math.round(Math.random() * 5);
   }
+  neighbourMethod() {
+    console.log('nM');
+  }
   render() {
     const { cells } = this.state;
     return (
       <StyledAppWrapper>
         <Title>match3</Title>
         {cells.map((col) =>
-          <Column cells={col} key={v4()} />
+          <Column cells={col} key={v4()} onClick={this.neighbourMethod.bind(this)} />
         )}
       </StyledAppWrapper>
     );

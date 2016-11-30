@@ -1,15 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Cell = ({ content }) => {
+const Cell = ({ content, onClick }) => {
   const StyledCell = styled.div`
     background-color: #fff;
     padding: 5px 0;
     margin: 4px 3px;
     border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    &:hover {
+      background-color: rebeccapurple;
+      color: #fff;
+    }
   `;
   return (
-    <StyledCell>{content}</StyledCell>
+    <StyledCell
+      onClick={onClick}
+    >
+      {content}
+    </StyledCell>
   );
 }
 export default Cell;
