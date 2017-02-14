@@ -20,15 +20,16 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
+      interactedCellCoords: [],
       rows: 5,
       cols: 3,
       cells: [],
     };
   }
   componentDidMount() {
-    this.generateCellsData();
+    this.populateGrid();
   }
-  generateCellsData() {
+  populateGrid() {
     const { cols, rows } = this.state;
     const cells = [];
     for (let y = 0; y < cols; y++) {
@@ -46,13 +47,22 @@ export default class App extends Component {
     });
   }
   generateCellContents() {
-    return Math.round(Math.random() * 5);
+    return Math.round(Math.random() * 3);
   }
-  neighbourMethod() {
-    console.log('nM');
+  cellInteract(x, y) {
+    this.setState({
+      interactedCellCoords: [x, y],
+    });
+    console.log('nM', x, y);
+  }
+  swapCells(src, dest) {
+    console.log('swap cells');
+  }
+  validateSwap(src, dest) {
+    console.log('validate potential swap');
   }
   render() {
-    const { cells } = this.state;
+    const { cells, interactedCellCoords } = this.state;
     return (
       <StyledAppWrapper>
         <Title>match3</Title>
@@ -60,7 +70,8 @@ export default class App extends Component {
           <Column
             cells={col}
             key={v4()}
-            onClick={this.neighbourMethod.bind(this)}
+            onClick={this.cellInteract.bind(this)}
+            interacted={interactedCellCoords}
           />
         )}
       </StyledAppWrapper>
