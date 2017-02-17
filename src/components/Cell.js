@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Cell = ({ content, onClick, x, y, interacted }) => {
-  const isInteracted = interacted[0] === x && interacted[1] === y;
+  const isInteracted = interacted && interacted.x === x && interacted.y === y;
   const StyledCell = styled.div`
     background-color: ${!isInteracted ? '#fff' : 'palevioletred'};
     padding: 5px 0;

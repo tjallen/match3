@@ -20,7 +20,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      interactedCellCoords: [],
+      interacted: null,
       rows: 5,
       cols: 3,
       cells: [],
@@ -50,19 +50,35 @@ export default class App extends Component {
     return Math.round(Math.random() * 3);
   }
   cellInteract(x, y) {
+    const { interacted } = this.state;
     this.setState({
-      interactedCellCoords: [x, y],
+      interacted: {
+        x,
+        y,
+      },
     });
-    console.log('nM', x, y);
+    if (interacted) {
+      this.swapCells(interacted.x, interacted.y, x, y);
+    }
   }
-  swapCells(src, dest) {
-    console.log('swap cells');
+  swapCells(sX, sY, dX, dY) {
+    let { cells } = this.state;
+    /*
+    swap source content property with destination content property w/ array destructuring:
+    https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Swapping_variables
+    */
+    [ cells[sX][sY].content, cells[dX][dY].content ] = [ cells[dX][dY].content, cells[sX][sY].content ];
+    this.setState({
+      cells,
+      interacted: null,
+    });
   }
   validateSwap(src, dest) {
     console.log('validate potential swap');
+    return true;
   }
   render() {
-    const { cells, interactedCellCoords } = this.state;
+    const { cells, interacted } = this.state;
     return (
       <StyledAppWrapper>
         <Title>match3</Title>
@@ -71,7 +87,7 @@ export default class App extends Component {
             cells={col}
             key={v4()}
             onClick={this.cellInteract.bind(this)}
-            interacted={interactedCellCoords}
+            interacted={interacted}
           />
         )}
       </StyledAppWrapper>
