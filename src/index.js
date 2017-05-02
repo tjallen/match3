@@ -6,11 +6,7 @@ import './styles.css';
 import App from './components/App';
 // import match3 from './reducers';
 import cells from './reducers/cells';
-
-const logger = (store) => (next) => (action) => {
-  console.log('action fired', action);
-  next(action);
-};
+import logger from 'redux-logger';
 
 const middleware = applyMiddleware(logger);
 
@@ -24,7 +20,7 @@ store.subscribe(() => {
   console.log('store changed', store.getState());
 })
 
-store.dispatch({type: 'E'})
+store.dispatch({type: 'SOME_ACTION_TYPE', content: 'foo'})
 
 ReactDOM.render(
   <Provider store={store}>
