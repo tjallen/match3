@@ -7,13 +7,15 @@ import App from './components/App';
 // import match3 from './reducers';
 import cells from './reducers/cells';
 import logger from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const middleware = applyMiddleware(logger);
 
 const store = createStore(
   cells,
-  middleware,
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(
+    middleware
+  )
 );
 
 store.subscribe(() => {
