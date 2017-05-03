@@ -18,6 +18,8 @@ const store = createStore(
   )
 );
 
+window.store = store;
+
 store.subscribe(() => {
   console.log('store changed', store.getState());
 })

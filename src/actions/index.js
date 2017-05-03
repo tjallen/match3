@@ -2,6 +2,8 @@
 export const SWAP_CELLS = 'SWAP_CELLS';
 export const CLEAR_CELL = 'CLEAR_CELL';
 export const FILL_CELL = 'FILL_CELL';
+export const CELL_INTERACT = 'CELL_INTERACT';
+export const POPULATE_BOARD = 'POPULATE_BOARD';
 
 // action creators
 
@@ -19,4 +21,12 @@ export function fillCell(x, y) {
 
 export function clearCell(x, y) {
   return { type: CLEAR_CELL, x, y };
+}
+
+export function cellInteract(x, y) {
+  return { type: CELL_INTERACT, x, y };
+}
+
+export function populateBoard() {
+  return { type: POPULATE_BOARD  };
 }
