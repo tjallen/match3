@@ -17,6 +17,9 @@ const cell = (state, action) => {
       // (x, y)
       return state // fill specified cell - use concat or array spread
     }
+    case POPULATE_BOARD: {
+      return { debug: true }
+    }
     default:
       return state;
   }

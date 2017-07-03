@@ -4,7 +4,7 @@ export default class Board extends Component {
   render() {
     return (
       <div>
-        Board ({this.props.cells.length} cells)
+        Board ({this.props.cells ? this.props.cells.length : '0'} cells)
         {
           /*
             {cells.map((col) =>

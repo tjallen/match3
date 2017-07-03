@@ -9,6 +9,8 @@ import cells from './reducers/cells';
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import { POPULATE_BOARD } from './actions';
+
 const middleware = applyMiddleware(logger);
 
 const store = createStore(
@@ -24,7 +26,7 @@ store.subscribe(() => {
   console.log('store changed', store.getState());
 })
 
-store.dispatch({type: 'SOME_ACTION_TYPE', content: 'foo'})
+store.dispatch({type: POPULATE_BOARD})
 
 ReactDOM.render(
   <Provider store={store}>
